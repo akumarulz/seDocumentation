@@ -1,0 +1,12 @@
+application: 
+  property: SEdocumentation
+  
+eureka:
+ client:
+  serviceUrl:
+   defaultZone: http://localhost:9003/eureka/
+   
+server:
+ servlet:
+  context-path: /documentation
+ port: 9000

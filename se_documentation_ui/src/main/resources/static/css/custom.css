@@ -1,0 +1,135 @@
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+}
+
+/*###############################
+MAIN CONTAINER
+############################### */
+#Heading {
+	width:100%;
+	border: 1px solid #f7e6ff;
+}
+
+#MainContainer {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+#subContainer{
+	display:flex;
+	height: 90%;
+}
+
+
+#MainContainer  #TopicsContainer{
+	border: 1px solid #f7e6ff;
+	overflow-y: auto;
+	width: 250px;
+	min-width: 250px;
+}
+
+#MainContainer  #topicDisplayContainer {
+	border: 1px solid #f7e6ff;
+	overflow-y: auto;
+	flex-grow: 2;
+	height: 100%;
+}
+
+
+.topicbtn {
+	width: 80%;
+}
+
+.subtopic-heading {
+	cursor:pointer;
+}
+
+.div-card-body:hover {
+	background-color: #ffffe6;
+}
+
+/*###############################
+		TEMPLATES CONTAINER START
+############################### */
+.template-subtopic {
+	height: 100%;
+	overflow-y: auto;
+	display: flex;
+	flex-direction: column;
+	background-color:  #ffffe6;	
+}
+
+.template-subtopic h2 {
+	
+    text-align: center;
+}
+
+#subtopicManagementBar { 
+	height: 50px;
+	padding: 5px;
+	display: flex;
+	justify-content: flex-end;
+	border: 1px solid #dddddd;
+}
+
+.subtopic-management-buttons {
+	margin-right: 10px;
+}
+.subtopic-heading {}
+
+.subtopic-content {
+	padding: 0 40px;
+}
+
+.topic_delete_button {
+	padding: 1px 3px;
+}
+/*###############################
+		TEMPLATES CONTAINER END
+############################### */
+
+/*###############################
+			MAIN CONTAINER END
+############################### */
+
+/*###############################
+	ADD DOCUMENT CONTAINER 
+############################### */
+
+.doc-form{
+	display: flex;
+	flex-flow: column;
+	width: 70%;
+	margin: auto;
+	border: 1px solid #ffd9b3;
+	margin-top: 50px;
+}
+
+.doc-form-wrapper {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	overflow-y: auto;
+	/*border: 10px solid #ffd9b3;*/
+	
+}
+
+
+.topic-row {
+	padding: 10px;
+	width: 100%;
+}
+
+.doc-label {
+	width: 100%
+}
+
+/*###############################
+	ADD DOCUMENT CONTAINER END
+############################### */
+

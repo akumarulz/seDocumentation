@@ -1,0 +1,83 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<body>
+		<script th:inline="javascript" th:fragment="javaScriptObj()">
+			/*<![CDATA[*/
+		       var __PROPS = /*[[${messageProperties}]]*/ {};
+	   
+			/*]]>*/
+		</script>
+		
+		 <!-- topics menu -->		
+			<div id="accordion" th:fragment="topics(topicListObj)">
+			  <div th:each="topicItem : ${topicListObj}" class="card" th:id="${'topicContainer'+topicItem.getId()}">
+			    <div class="card-header" id="headingOne">
+			      <h5 class="mb-0">
+			        <button  type="button" class="btn btn-info topicbtn" th:text="${topicItem.getTopicTitle()}" data-toggle="collapse" th:data-target="'#'+${#strings.replace(topicItem.getTopicTitle(),' ', '_')}" aria-expanded="true" th:aria-controls="${#strings.replace(topicItem.getTopicTitle(),' ','_')}">
+			         TITLE
+			        </button>
+			         <button type='button' th:data-topicId="${topicItem.getId()}" class='btn btn-danger topic_delete_button' ><i class='fas fa-times'></i></button>
+			      </h5>
+			    </div>
+				<div th:each="subTopicItem : ${topicItem.getSubTopics()}" >
+				    <div th:id="${#strings.replace(topicItem.getTopicTitle(), ' ', '_')}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+				      <div class="card-body div-card-body">
+						<span  th:data-subtopic-id="${subTopicItem.getId()}" class="subtopic-heading" th:text="${subTopicItem.getTitle()}">SUBTOPIC</span>
+				      </div>
+					</div>
+			    </div>
+			  </div>
+			</div>
+		<!-- topics menu -->	
+			
+		<!-- Nav -->
+			<div id="Heading" th:fragment="navHeading">
+				<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+	  				<!-- Navbar content -->
+	  				<a class="navbar-brand" href="#">Documentation</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+					  <span class="navbar-toggler-icon"></span>
+					</button>
+					  
+					<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+					  <div class="navbar-nav">
+					    <a class="nav-item nav-link" href="/addDocument" th:href="@{/addDocument}">Add document<span class="sr-only">(current)</span></a>
+					    <a class="nav-item nav-link" href="/documentation" th:href="@{/documentation}">Home</a>
+					  </div>
+					</div>
+				</nav>
+			</div>
+		<!-- Nav -->
+	
+		<!-- currentTopic Dropdown -->
+			<select name="currentTopic" class="form-control" id="documentCurrentTopics" th:fragment="currentTopics(currentTopicsList)">
+				<option value="default">Select One</option>
+				<option th:each="topicItem : ${currentTopicsList}" th:value="${topicItem.getId()}" th:text="${topicItem.getTopicTitle()}" ></option>
+			</select>
+		<!-- currentTopic Dropdown -->
+	
+		<!-- Modals Start -->
+			<div id="topic-delete-confirm" class="modal" tabindex="-1" role="dialog" th:fragment="topic-delete-confirm-modal">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title">Delete Topic Confirmation</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			        <p>This Will delete all subtopics, please confirm Deletion</p>
+			        <div id="topic-delete-confirm-work-area"></div>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			        <button type="button" id="topic-delete-confirm-confirmbtn" class="btn btn-danger">Delete Topic</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		
+		<!-- Modals End -->
+	</body>
+</html>

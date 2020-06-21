@@ -1,0 +1,16 @@
+encrypt:
+  key: michaelTaylor@1984
+
+spring:
+ application:
+    name: sedatabaseAccessService
+ cloud: 
+  config:   
+   discovery: 
+    enabled: true
+    serviceId: sedocument_config_server 
+    
+eureka: 
+ client: 
+  serviceUrl: 
+   defaultZone: http://localhost:9003/eureka/

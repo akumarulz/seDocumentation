@@ -1,0 +1,3 @@
+encrypt:
+  key: michaelTaylor@1984
+spring:  cloud:    config:      server:        encrypt:          enabled: false

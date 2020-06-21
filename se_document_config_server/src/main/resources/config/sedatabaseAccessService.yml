@@ -1,0 +1,26 @@
+greeting: 
+  hello: '{cipher}38832eaa4b89e8cef7fcbc7ad8649267d78ed035fe7e899e582a3630e9ff087e'
+  
+eureka:
+ client:
+  serviceUrl:
+   defaultZone: http://localhost:9003/eureka/
+   
+server:
+  servlet: 
+   context-path: /dbaccess
+  port: 9001
+
+spring:
+  application: 
+   name: sedatabaseAccessService
+  datasource.username: '{cipher}3ed85d7b5b8ded4b6a3816a6eed2f34c812ecdae25218455ed207bc4e4f88f7c'
+  datasource.password: '{cipher}04fed138f0c8112142fa56ae04d3c685078a2a4a3739747b5d1be2e29e16f62c'
+  datasource.url: jdbc:mysql://192.168.99.100:3306/se_documentation
+  jpa:
+    properties:
+      hibernate:
+       ddl-auto: create
+       dialect:
+         storage_engine: innodb
+   

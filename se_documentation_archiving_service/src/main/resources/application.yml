@@ -1,0 +1,10 @@
+server: 
+  servlet: 
+   context-path: /seDocumentationArchiving
+
+com:
+ michael: 
+  archiving:
+   services:
+     ArchiveTopicServiceIntef:
+      performArchive: C:\Users\darda\SeDocumentationArchive

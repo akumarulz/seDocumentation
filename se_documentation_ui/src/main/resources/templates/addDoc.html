@@ -1,0 +1,47 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/headers::header(title=${'Document'})"></head>
+	<body>
+		
+		<div class="doc-form-wrapper">
+		
+		<div th:include="fragments/fragments::navHeading"></div>
+			<form id="AddDocumentForm" class="doc-form">
+				<div class="form-row topic-row">
+					<div class="col-md-6">
+						<label class="doc-label" for="documentNewTopic">New Topic</label>	 
+						<input name="newTopic" type="text" class="form-control"	id="documentNewTopic" placeholder="New Topic Title">		
+						<small>Topic title, this will create a new selectable topic</small>
+					</div>
+					
+					<div class="col-md-6">
+						<label class="doc-label" for="documentCurrentTopics">Current Topics</label>	 
+						<select th:replace="fragments/fragments::currentTopics(${currentTopics})">
+							<option>OPTIONS</option>
+						</select>		
+						<small>Select a current topic</small>
+					</div>
+				
+				</div>
+				<div class="form-row topic-row">
+					<div class="col-md-6">
+						<label class="doc-label" for="documentTitle">Title</label>	 
+						<input name="title" type="text" class="form-control"	id="documentTitle" placeholder="New Title">		
+						<small>Title</small>
+					</div>
+				</div>
+				
+				<div class="form-row topic-row">
+					<div>
+						<label class="doc-label" for="documentContent">Content</label>	 
+						<Textarea name="content" rows="5" cols="100" placeholder="Content" id="documentContent"></Textarea>
+					</div>
+				</div>
+				<div class="form-row topic-row">
+						<button type="button"  id="formSubmitBtn" class="btn btn-outline-primary">Save</button>
+				</div>
+			</form>
+		</div>
+		<script th:replace="fragments/fragments::javaScriptObj"></script>
+	</body>
+</html>
