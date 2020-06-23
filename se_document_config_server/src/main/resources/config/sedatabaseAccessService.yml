@@ -21,6 +21,6 @@ spring:
     properties:
       hibernate:
        ddl-auto: create
-       dialect:
+       dialect: 
          storage_engine: innodb
    

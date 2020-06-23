@@ -134,7 +134,7 @@ public class DbServiceimple implements DbServiceInterface {
 	@Override
 	public Tuple<Boolean,Topic> deleteTopic(Long topicId) {
 		Topic topic = this.findTopicByIdComplete(topicId); //get the topic to be returned later
-		topicRepo.deleteById(topicId); // deleted the topic
+		topicRepo.deleteById(topicId); // delete the topic
 		return new Tuple<>(
 				this.findTopicById(topicId) == null, // should be false 
 				topic); //return the topic so its archived in another service

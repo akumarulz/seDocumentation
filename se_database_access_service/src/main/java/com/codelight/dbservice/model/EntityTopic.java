@@ -24,8 +24,7 @@ public class EntityTopic {
 
 	private String topicTitle;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "topic_id")
+	@OneToMany(mappedBy = "topic",cascade = CascadeType.ALL, fetch = FetchType.LAZY , orphanRemoval = true)
 	private Set<EntitySubTopic> subtopic_list = new HashSet<EntitySubTopic>();
 
 	public Long getTopic_id() {

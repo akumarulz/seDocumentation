@@ -23,7 +23,7 @@ public class EntitySubTopic {
 	private String content;
 
 	@ManyToOne(optional = false)
-	@JoinColumn(name="topic_id")
+	@JoinColumn(name="topic_id", nullable = false)
 	@JsonIgnore
 	private EntityTopic topic;
 
