@@ -52,6 +52,13 @@ MAIN CONTAINER
 	background-color: #ffffe6;
 }
 
+.nav-custom-container {
+	    flex-direction: row !important;
+}
+
+.nav-custom-container-item {
+	flex-grow: 1;
+}
 /*###############################
 		TEMPLATES CONTAINER START
 ############################### */
@@ -133,3 +140,11 @@ MAIN CONTAINER
 	ADD DOCUMENT CONTAINER END
 ############################### */
 
+/*###############################
+	ARCHIVED TOPICS PAGE START
+############################### */
+
+
+/*###############################
+	ARCHIVED TOPICS PAGE END
+############################### */
