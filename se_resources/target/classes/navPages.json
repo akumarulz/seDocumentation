@@ -1,0 +1,16 @@
+{
+	"navList": [
+		{
+			"href": "/documentation",
+			"label": "Home"
+		},
+		{
+			"href": "/addDocument",
+			"label": "Add Document"
+		},
+		{
+			"href": "/archivedDocumentsManagement",
+			"label": "Archived Documents Management"
+		}
+	]
+}

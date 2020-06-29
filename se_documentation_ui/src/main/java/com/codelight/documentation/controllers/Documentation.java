@@ -30,6 +30,7 @@ import com.codelight.documentation.response.GetTopicResponse;
 import com.codelight.documentation.service.interfaces.ServiceArchivingInterface;
 import com.codelight.documentation.service.interfaces.ServiceInterface;
 import com.codelight.documentation.utils.Utils;
+import com.michael.documentation.resources.model.pojo.NavigationWrapper;
 import com.michael.documentation.resources.model.topics.SubTopic;
 import com.michael.documentation.resources.model.topics.Topic;
 import com.michael.documentation.resources.utils.DocumentConstants;
@@ -49,7 +50,10 @@ public class Documentation {
 	@Autowired
 	private ServiceArchivingInterface serviceArchivingImpl;
 	
-	@RequestMapping(value= {""})
+	@Autowired
+	private NavigationWrapper navigationWrapper;
+	
+	@RequestMapping
 	public String home(Model model) throws SEdocumentationException  {
 		
 	
@@ -72,7 +76,10 @@ public class Documentation {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
+		
+		
 		model.addAttribute("messageProperties",props);
+		model.addAttribute("navigationList", navigationWrapper.getNavList());
 		return DocumentConstants.PAGE_SE_DOCUMENT_DOCUMENTATION;
 	}
 	

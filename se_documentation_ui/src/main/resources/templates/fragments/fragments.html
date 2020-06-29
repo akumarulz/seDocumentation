@@ -41,9 +41,7 @@
 					  
 					<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 					  <div class="navbar-nav nav-custom-container">
-					  	<a class="nav-item nav-link nav-custom-container-item" href="/documentation" th:href="@{/documentation}">Home</a>
-					  	<a class="nav-item nav-link nav-custom-container-item" href="/addDocument" th:href="@{/addDocument}">Add document<span class="sr-only">(current)</span></a>
-					  	<a class="nav-item nav-link nav-custom-container-item" href="/archivedDocumentsManagement" th:href="@{/archivedDocumentsManagement}">Archived Documents Management</a>
+					  	<a class="nav-item nav-link nav-custom-container-item" th:each="navItem : ${navigationList}" th:href="@{${navItem.getHref()}}" th:text="${navItem.getLabel()}" >NAV</a>
 					  </div>
 					</div>
 				</nav>

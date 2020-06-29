@@ -24,6 +24,7 @@ import com.codelight.documentation.service.interfaces.ServiceTopicValidationInte
 import com.codelight.documentation.utils.DeleteSubTopicWrapper;
 import com.codelight.documentation.utils.SaveTopicWrapper;
 import com.codelight.documentation.utils.Utils;
+import com.michael.documentation.resources.model.pojo.NavigationWrapper;
 import com.michael.documentation.resources.model.topics.Topic;
 import com.michael.documentation.resources.response.Response;
 import com.michael.documentation.resources.utils.DocumentConstants;
@@ -40,6 +41,9 @@ public class AddDoc {
 	
 	@Autowired
 	private ServiceTopicValidationInterface serviceTopicValidationImpl;
+	
+	@Autowired
+	private NavigationWrapper navigationWrapper;
 	
 	@RequestMapping(value = { "" })
 	public String home(Model model) {
@@ -60,6 +64,7 @@ public class AddDoc {
 		
 		model.addAttribute("currentTopics", currentTopics);
 		model.addAttribute("messageProperties",props);
+		model.addAttribute("navigationList", navigationWrapper.getNavList());
 		return DocumentConstants.PAGE_SE_DOCUMENT_ADD_DOC;
 	}
 	

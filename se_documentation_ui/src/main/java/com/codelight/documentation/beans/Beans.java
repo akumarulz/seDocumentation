@@ -8,6 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClient.Builder;
 
+import com.michael.documentation.resources.model.pojo.NavigationWrapper;
 import com.michael.documentation.resources.utils.DocumentConstants;
 import com.michael.documentation.resources.utils.ResourceUtils;
 
@@ -18,7 +19,8 @@ import com.michael.documentation.resources.utils.ResourceUtils;
  */
 @Configuration
 public class Beans {
-
+	private String NAV_JSON_FILE = "navPages.json";
+	
 	@Bean(name="DBAccessWebclient")
 	@LoadBalanced
 	public WebClient.Builder getWebClientBuilder(){
@@ -54,5 +56,9 @@ public class Beans {
 
 	}
 	
+	@Bean
+	public NavigationWrapper getNavigation() {
+		return ResourceUtils.<NavigationWrapper>getJsonObj(NavigationWrapper.class, NAV_JSON_FILE).get();
+	}
 	
 }

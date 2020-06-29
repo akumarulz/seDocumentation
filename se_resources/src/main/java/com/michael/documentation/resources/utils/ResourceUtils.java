@@ -1,10 +1,20 @@
 package com.michael.documentation.resources.utils;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import org.apache.commons.io.IOUtils;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 public class ResourceUtils {
 	private ResourceUtils() {
@@ -48,5 +58,26 @@ public class ResourceUtils {
 		
 		ExecutorService service = Executors.newFixedThreadPool(numOfThreads);
 		return service;
+	}
+	
+	public static <T> Optional<T> getJsonObj(Class<T> clazz, String fileName) {
+		
+		try(InputStream input = ResourceUtils.class.getClassLoader().getResourceAsStream(fileName)){
+			
+			String in = IOUtils.toString(input, StandardCharsets.UTF_8);
+			
+
+            ObjectMapper mapper = new ObjectMapper();
+            return Optional.of(mapper.readValue(in, clazz));
+            
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return Optional.empty();
+		
 	}
 }
