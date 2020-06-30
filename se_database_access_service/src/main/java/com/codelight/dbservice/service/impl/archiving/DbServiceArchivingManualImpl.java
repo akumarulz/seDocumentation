@@ -23,10 +23,10 @@ public class DbServiceArchivingManualImpl implements DbServiceArchivingManualInt
 
 	@Override
 	public List<ArchiveEntry> getEntries(Integer limit, Integer offset) {
-		if(limit == null) {
+		if(limit == null || limit <= 0) {
 			limit = Integer.MAX_VALUE; // basically no limit
 		}
-		if(offset == null) {
+		if(offset == null || offset < 0) {
 			offset = 0; // no offset
 		}
 		

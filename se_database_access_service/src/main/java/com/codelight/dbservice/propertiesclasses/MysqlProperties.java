@@ -1,11 +1,13 @@
 package com.codelight.dbservice.propertiesclasses;
 
+import com.codelight.dbservice.utils.Utils;
+
 public class MysqlProperties {
 
 	private String url;
 	private String username;
 	private String password;
-	private String archiveTable = "archive_records";
+	private String archiveTable = Utils.ARCHIVE_TABLE;
 
 	public String getPassword() {
 		return password;

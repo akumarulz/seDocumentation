@@ -6,7 +6,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Table(name = "archive_records")
+import com.codelight.dbservice.utils.Utils;
+
+@Table(name = Utils.ARCHIVE_TABLE)
 @Entity
 public class EntityArchiveRecord {
 
