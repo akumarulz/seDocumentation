@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import com.codelight.documentation.docexceptions.SEdocumentationException;
 import com.michael.documentation.resources.response.Response;

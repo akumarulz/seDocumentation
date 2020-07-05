@@ -15,6 +15,7 @@ public interface DocumentConstants {
 	public static final String URL_GET_TOPIC = "/getTopic";
 	public static final String URL_DELETE_TOPIC = "/deleteTopic";
 	public static final String URL_ARCHIVE_ENTRY="/archiveEntry";
+	public static final String URL_ARCHIVE_MANAGEMENT_GET_RECORDS = "/getArchivedRecords/%d/%d";
 	
 	public static final String URL_SE_DOCUMENT_DB_ACCESS_PROTOCOL = "http";
 	public static final String URL_SE_DOCUMENT_DB_ACCESS_NAME = "sedatabaseAccessService";

@@ -3,6 +3,10 @@ package com.codelight.dbservice.service.impl.archiving;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +20,7 @@ public class DbServiceArchivingImpl implements DbServiceArchivingInterf {
 
 	@Autowired
 	private ArchiveRespositoryInterface archiveRespositoryInterface;
+	
 	
 	@Override
 	public boolean storeArchiveRecord(String recordName) {
@@ -44,5 +49,7 @@ public class DbServiceArchivingImpl implements DbServiceArchivingInterf {
 				});
 		
 	}
+
+	
 
 }

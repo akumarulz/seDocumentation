@@ -13,6 +13,8 @@ public class ArchiveEntry {
 		this.id = id;
 		this.archiveEntry = archiveEntry;
 	}
+	
+	public ArchiveEntry() {}
 
 	public Long getId() {
 		return id;

@@ -23,7 +23,7 @@ public class ArchivedDocumentsManagement {
 	@GetMapping
 	public String getArchivedTopics(Model model) {
 		model.addAttribute("navigationList", navigationWrapper.getNavList());
-		GetArchivedRecordsResponse r = archivedDocumentsManagementImple.getAllArchived(1,2);
+		GetArchivedRecordsResponse r = archivedDocumentsManagementImple.getAllArchived(0,0);
 		return "archivedDocumentsManagement";
 	}
 }

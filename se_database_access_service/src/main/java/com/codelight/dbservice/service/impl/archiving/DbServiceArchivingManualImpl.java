@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.codelight.dbservice.propertiesclasses.MysqlProperties;
 import com.codelight.dbservice.service.interf.archiving.DbServiceArchivingManualInterf;
+import com.codelight.dbservice.utils.Utils;
 import com.michael.documentation.resources.model.archiving.ArchiveEntry;
 
 @Service
@@ -85,6 +86,34 @@ public class DbServiceArchivingManualImpl implements DbServiceArchivingManualInt
 				e.printStackTrace();
 			}
 		}
+	}
+
+	@Override
+	public Integer getCountAllArchiveRecords() {
+		Connection conn = null;
+		Statement st = null;
+		ResultSet rs = null;
+		Integer archiveCount = 0;
+		try {
+			conn = getConnection();
+			st = conn.createStatement();
+			
+			String query = "SELECT count(*) FROM " + Utils.ARCHIVE_TABLE;
+			rs = st.executeQuery(query);
+			
+			while(rs.next()) {
+				archiveCount = 	rs.getInt(1);
+			}
+			
+		} catch (SQLException | ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConnections(conn, rs, st);
+		}
+		
+		
+		return archiveCount;
 	}
 
 }

@@ -13,4 +13,10 @@ public interface DbServiceArchivingManualInterf {
 	 * @return
 	 */
 	public List<ArchiveEntry> getEntries(Integer limit, Integer offset);
+	
+	/**
+	 * It Get A count of all Archived Records
+	 * @return
+	 */
+	public Integer getCountAllArchiveRecords();
 }

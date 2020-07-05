@@ -2,6 +2,7 @@ package com.michael.documentation.resources.response;
 
 import java.util.List;
 
+import com.michael.documentation.resources.model.archiving.ArchiveEntry;
 import com.michael.documentation.resources.model.topics.Topic;
 
 public class Response {
@@ -9,6 +10,7 @@ public class Response {
 	private String errorCode;
 	private List<String> errorMsgs;
 	private Topic responseTopic;
+
 	
 	public Response() {
 
@@ -49,5 +51,4 @@ public class Response {
 	public void setResponseTopic(Topic responseTopic) {
 		this.responseTopic = responseTopic;
 	}
-
 }

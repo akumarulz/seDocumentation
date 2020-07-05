@@ -13,8 +13,11 @@
 		 		</div>
 			</div>
 	 	</div>
-	 	<div th:replace="fragments/fragments::topic-delete-confirm-modal"></div>
-		<script th:replace="fragments/fragments::javaScriptObj"></script>
+	 	<script type="text/javascript">
+	 	
+	 	Utils.ajax = (URLBASE+"/archivedDocumentsManagement", {}, ()={});
+	 	
+	 	</script>
 	</body>
 	
 </html>

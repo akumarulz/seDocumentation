@@ -2,10 +2,13 @@ package com.michael.documentation.resources.model.archiving;
 
 import java.util.List;
 
-public class ArchivingResponse {
+import com.michael.documentation.resources.response.Response;
+
+public class ArchivingResponse extends Response {
 
 	private List<String> archives;
 	private List<ArchiveEntry> archiveEntryList;
+	private Integer countArchiveRecords;
 	
 	public List<String> getArchives() {
 		return archives;
@@ -21,5 +24,13 @@ public class ArchivingResponse {
 
 	public void setArchiveEntryList(List<ArchiveEntry> archiveEntryList) {
 		this.archiveEntryList = archiveEntryList;
+	}
+
+	public Integer getCountArchiveRecords() {
+		return countArchiveRecords;
+	}
+
+	public void setCountArchiveRecords(Integer countArchiveRecords) {
+		this.countArchiveRecords = countArchiveRecords;
 	}
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.codelight.dbservice.requests.RequestArchive;
 import com.codelight.dbservice.service.impl.archiving.DbServiceArchivingManualImpl;
 import com.codelight.dbservice.service.interf.archiving.DbServiceArchivingInterf;
+import com.codelight.dbservice.service.interf.archiving.DbServiceArchivingManualInterf;
 import com.michael.documentation.resources.model.archiving.ArchivingResponse;
 import com.michael.documentation.resources.response.Response;
 import com.michael.documentation.resources.utils.DocumentConstants;
@@ -21,34 +22,35 @@ import com.michael.documentation.resources.utils.DocumentConstants;
 public class DbArchiveRestController {
 
 	@Autowired
-	private DbServiceArchivingInterf dbServiceArchivingInterf; 
+	private DbServiceArchivingInterf dbServiceArchivingImpl; 
 	
 	@Autowired
-	private DbServiceArchivingManualImpl dbServiceArchivingManualinterf;
+	private DbServiceArchivingManualInterf dbServiceArchivingManualImpl;
 	
 	@PostMapping(value = DocumentConstants.URL_ARCHIVE_ENTRY)
 	public ResponseEntity<Response> archiveEntry(@RequestBody RequestArchive request) {
-		var bool = dbServiceArchivingInterf.storeArchiveRecord(request.getArchiveEntry());
+		var bool = dbServiceArchivingImpl.storeArchiveRecord(request.getArchiveEntry());
 		var response = new Response();
 		
 		response.setSuccess(bool);
 		return ResponseEntity.ok(response);
 	}
 	
-	@GetMapping(value = "/getAllArchivedRecords")
-	public ResponseEntity<ArchivingResponse> getAllArchiveRecords(){
-		dbServiceArchivingInterf.getAllTopicArchives();
-		
-		return ResponseEntity.ok().build();
-	}
-	
 	@GetMapping(value = "/getArchivedRecords/{limit}/{offset}")
 	public ResponseEntity<ArchivingResponse> getArchivedRecords(
-			@PathVariable("limit") Integer limit,
-			@PathVariable("offset") Integer offset){
-		ArchivingResponse response = new ArchivingResponse();
-		response.setArchiveEntryList(dbServiceArchivingManualinterf.getEntries(limit, offset));
+			@PathVariable(name = "limit", required = true) Integer limit,
+			@PathVariable(name = "offset", required = true) Integer offset){
+		var response = new ArchivingResponse();
+		response.setArchiveEntryList(dbServiceArchivingManualImpl.getEntries(limit, offset));
 		
+		return ResponseEntity.ok(response);
+	}
+	
+	@GetMapping(value = "/getCountAllArchivedRecords")
+	public ResponseEntity<ArchivingResponse> getCountAllArchivedRecords(){
+		var response = new ArchivingResponse();
+		response.setCountArchiveRecords(dbServiceArchivingManualImpl.getCountAllArchiveRecords());
+		response.setSuccess(true);
 		return ResponseEntity.ok(response);
 	}
 }

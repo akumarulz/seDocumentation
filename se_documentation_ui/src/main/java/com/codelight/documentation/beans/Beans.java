@@ -24,7 +24,7 @@ public class Beans {
 	@Bean(name="DBAccessWebclient")
 	@LoadBalanced
 	public WebClient.Builder getWebClientBuilder(){
-		//@// @formatter:off
+		// @formatter:off
 		Builder clientBuilder = WebClient
 			.builder()
 			.defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
@@ -41,7 +41,7 @@ public class Beans {
 	@Bean(name="ArchivingWebClient")
 	@LoadBalanced
 	public WebClient.Builder getWebClientBuilderArchiving(){
-		//@// @formatter:off
+		// @formatter:off
 		Builder clientBuilder = WebClient
 				.builder()
 				.defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
@@ -56,6 +56,24 @@ public class Beans {
 
 	}
 	
+	
+	@Bean(name="ArchiveManagementWebClient")
+	@LoadBalanced
+	public WebClient.Builder getWebClientBuilderArchivingManaement(){
+		// @formatter:off
+		Builder clientBuilder = WebClient
+				.builder()
+				.defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+				.defaultHeader(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
+				.baseUrl(ResourceUtils.constructBaseRestUrl(DocumentConstants.URL_SE_DOCUMENT_DB_ACCESS_PROTOCOL,
+						DocumentConstants.URL_SE_DOCUMENT_DB_ACCESS_NAME,
+						DocumentConstants.URL_SE_DOCUMENT_DB_ACCESS_CONTEXTPATH,
+						DocumentConstants.URL_SE_DOCUMENT_DB_ACCESS_ARCHIVECONTROLLER));
+		
+		return clientBuilder;
+		// @formatter:on
+
+	}
 	@Bean
 	public NavigationWrapper getNavigation() {
 		return ResourceUtils.<NavigationWrapper>getJsonObj(NavigationWrapper.class, NAV_JSON_FILE).get();
