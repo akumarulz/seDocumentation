@@ -26,7 +26,6 @@ import com.codelight.documentation.utils.SaveTopicWrapper;
 import com.codelight.documentation.utils.Utils;
 import com.michael.documentation.resources.model.pojo.NavigationWrapper;
 import com.michael.documentation.resources.model.topics.Topic;
-import com.michael.documentation.resources.response.Response;
 import com.michael.documentation.resources.utils.DocumentConstants;
 
 
@@ -45,7 +44,7 @@ public class AddDoc {
 	@Autowired
 	private NavigationWrapper navigationWrapper;
 	
-	@RequestMapping(value = { "" })
+	@RequestMapping
 	public String home(Model model) {
 		
 		Properties props = null;

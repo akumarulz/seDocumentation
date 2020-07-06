@@ -35,7 +35,6 @@ public class archivedDocumentsManagementImple implements archivedDocumentsManage
 			return this.<ArchivingResponse>performGetRequest(url, ArchivingResponse.class).getArchiveEntryList();
 			
 		} catch (SEdocumentationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return new ArrayList<ArchiveEntry>(Arrays.asList(
@@ -47,7 +46,15 @@ public class archivedDocumentsManagementImple implements archivedDocumentsManage
 	};
 	
 	private Supplier<Integer> getNumTotalEntries = () -> {
-		return 10;
+		var count = 0;
+		try {
+			count =  this.<ArchivingResponse>performGetRequest(
+					DocumentConstants.URL_ARCHIVE_MANAGEMENT_GET_COUNT_ARCHIVE_RECORDS, 
+					ArchivingResponse.class).getCountArchiveRecords();
+		} catch (SEdocumentationException e) {
+			e.printStackTrace();
+		}
+		return count;
 	};
 	
 	private BiFunction<List<ArchiveEntry>, Integer, GetArchivedRecordsResponse> f = GetArchivedRecordsResponse::new;

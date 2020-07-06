@@ -56,7 +56,6 @@ public class Beans {
 
 	}
 	
-	
 	@Bean(name="ArchiveManagementWebClient")
 	@LoadBalanced
 	public WebClient.Builder getWebClientBuilderArchivingManaement(){
@@ -72,8 +71,8 @@ public class Beans {
 		
 		return clientBuilder;
 		// @formatter:on
-
 	}
+	
 	@Bean
 	public NavigationWrapper getNavigation() {
 		return ResourceUtils.<NavigationWrapper>getJsonObj(NavigationWrapper.class, NAV_JSON_FILE).get();

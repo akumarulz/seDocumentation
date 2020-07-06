@@ -1,6 +1,7 @@
 $(document).ready(function(){
 	Utils.log("document ready");
 	Utils.log(__PROPS);
+
 	
 	function formSubmitComplete(response){
 		Utils.log(response);
